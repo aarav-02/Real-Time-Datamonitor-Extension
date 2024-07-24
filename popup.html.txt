@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real-Time Data Monitor</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div id="content">
+    <h1>Real-Time Data Monitor</h1>
+    <div id="data-container">
+      <p>Loading data...</p>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

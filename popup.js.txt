@@ -1,0 +1,22 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const dataContainer = document.getElementById('data-container');
+
+  // Function to update the data in the popup
+  function updateData(data) {
+    dataContainer.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+  }
+
+  // Listen for messages from the background script
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === 'dataUpdate') {
+      updateData(message.data);
+    }
+  });
+
+  // Request the latest data when the popup is opened
+  chrome.runtime.sendMessage({ type: 'requestData' }, (response) => {
+    if (response.data) {
+      updateData(response.data);
+    }
+  });
+});
